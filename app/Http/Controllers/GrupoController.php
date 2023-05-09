@@ -47,7 +47,8 @@ class GrupoController extends Controller
     }
     public function show(Grupo $grupo)
     {
-        return view('grupos.show', compact('grupo'));
+        $perguntas = $grupo->perguntas;
+        return view('grupos.show', compact('grupo', 'perguntas'));
     }
 
     public function update(Request $request, Questionario $questionario, Grupo $grupo)

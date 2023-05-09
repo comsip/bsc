@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -24,8 +23,13 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Descrição</th>
                                 <th>Grupo</th>
+                                <th>Descrição</th>
+                                <th>Opção 1</th>
+                                <th>Opção 2</th>
+                                <th>Opção 3</th>
+                                <th>Opção 4</th>
+                                <th>Opção 5</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -33,8 +37,13 @@
                             @foreach ($perguntas as $pergunta)
                             <tr>
                                 <td>{{ $pergunta->id }}</td>
-                                <td>{{ $pergunta->descricao }}</td>
                                 <td>{{ $pergunta->grupo->nome }}</td>
+                                <td>{{ $pergunta->descricao }}</td>
+                                <td>{{ $pergunta->op1 }}</td>
+                                <td>{{ $pergunta->op2 }}</td>
+                                <td>{{ $pergunta->op3 }}</td>
+                                <td>{{ $pergunta->op4 }}</td>
+                                <td>{{ $pergunta->op5 }}</td>
                                 <td>
                                     <div class="d-flex">
                                         <a href="{{ route('perguntas.edit', $pergunta->id) }}" class="btn btn-warning m-1">Editar</a>
@@ -42,7 +51,8 @@
                                         <form action="{{ route('perguntas.destroy', $pergunta->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger m-1" onclick="return confirm('Tem certeza que deseja excluir este pergunta?')">Excluir</button>
+                                            <button type="submit" class="btn btn-danger m-1" onclick="return confirm('Tem certeza que deseja excluir este pergunta?')">
+                                                Excluir</button>
                                         </form>
                                     </div>
                                 </td>

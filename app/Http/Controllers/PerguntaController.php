@@ -21,10 +21,14 @@ class PerguntaController extends Controller
 
     public function store(Request $request, Grupo $grupo)
     {
-
         $validatedData = $request->validate([
             'descricao' => 'required|string|max:255',
             'grupo_id' =>  'required|string|max:255',
+            'op1' =>  'required|string|max:255',
+            'op2' =>  'required|string|max:255',
+            'op3' =>  'required|string|max:255',
+            'op4' =>  'required|string|max:255',
+            'op5' =>  'nullable',
         ], [
             'descricao.required' => 'A descrição do pergunta é obrigatória.',
             'descricao.max' => 'A descrição da pergunta não pode ter mais de :max caracteres.',
@@ -55,6 +59,11 @@ class PerguntaController extends Controller
         $validatedData = $request->validate([
             'descricao' => 'required|string|max:255',
             'grupo_id' =>  'required|string|max:255',
+            'op1' =>  'required|string|max:255',
+            'op2' =>  'required|string|max:255',
+            'op3' =>  'required|string|max:255',
+            'op4' =>  'required|string|max:255',
+            'op5' =>  'nullable',
         ], [
             'descricao.required' => 'A descrição do pergunta é obrigatória.',
             'descricao.max' => 'A descrição da pergunta não pode ter mais de :max caracteres.',

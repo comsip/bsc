@@ -15,13 +15,17 @@ class CreatePerguntasTable extends Migration
     {
         Schema::create('perguntas', function (Blueprint $table) {
             $table->id();
-            $table->string('descricao');
+            $table->string('descricao'); // Cabeçalho da perguntas
+            $table->string('op1'); // opção de resposta da pergunta
+            $table->string('op2'); // opção de resposta da pergunta
+            $table->string('op3'); // opção de resposta da pergunta
+            $table->string('op4'); // opção de resposta da pergunta
+            $table->string('op5')->nullable(); // opção de resposta da pergunta esta pode ser nula
             $table->unsignedBigInteger('grupo_id');
             $table->foreign('grupo_id')->references('id')->on('grupos')->onDelete('cascade');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
