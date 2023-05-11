@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\RespostaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::get('/flex', function () {
     return view('flex');
 });
 
+Route::get('/respostas/{questionario_id}', [RespostaController::class, 'exibirRespostas']);
+
 
 Auth::routes();
 
@@ -30,3 +33,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('questionarios', 'App\Http\Controllers\QuestionarioController');
 Route::resource('grupos', 'App\Http\Controllers\GrupoController');
 Route::resource('perguntas', 'App\Http\Controllers\PerguntaController');
+Route::resource('cards', 'App\Http\Controllers\CardController');
+Route::resource('respostas', 'App\Http\Controllers\RespostaController');

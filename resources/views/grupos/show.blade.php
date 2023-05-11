@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h2>Perguntas do Grupo</h2>
@@ -29,32 +29,27 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>Nº</th>
                                 <th>descrição</th>
                                 <th>Opção 1</th>
                                 <th>Opção 2</th>
                                 <th>Opção 3</th>
                                 <th>Opção 4</th>
                                 <th>Opção 5</th>
-                                <th>Ações</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($perguntas as $pergunta)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $pergunta->descricao }}</td>
                                 <td>{{ $pergunta->op1 }}</td>
                                 <td>{{ $pergunta->op2 }}</td>
                                 <td>{{ $pergunta->op3 }}</td>
                                 <td>{{ $pergunta->op4 }}</td>
                                 <td>{{ $pergunta->op5 }}</td>
-                                <td>
-                                    <a href="{{ route('perguntas.edit', $pergunta->id) }}" class="btn btn-primary">Editar</a>
-                                    <form action="{{ route('perguntas.destroy', $pergunta->id) }}" method="POST" style="display: inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Excluir</button>
-                                    </form>
-                                </td>
+
                             </tr>
                             @endforeach
                         </tbody>
