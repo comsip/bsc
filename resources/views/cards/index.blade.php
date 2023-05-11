@@ -56,24 +56,29 @@
   }
 </style>
 <div class="container">
+
   <div class="row">
+
+    <a href="{{ route('cards.create') }}" class="btn btn-primary float-right">Novo Cartão</a>
+    @foreach($cards as $card)
     <div class="card-produto">
       <div class="container-img">
-        <img src="https://www.otempo.com.br/image/contentid/policy:1.2826169:1678359368/coxinha-frango-salgado-jpg.jpg?f=3x2&w=1224" alt="">
+        <img src="{{ asset('images/cards/'.$card->imagem )}}" alt="">
       </div>
       <div class="container-info">
-        <h3>Coxinha Gourmet</h3>
-        <p>A coxinha mais saborosa de frango com catupiry</p>
-        <small>Lanche</small>
+        <h3>{{ $card->titulo }}</h3>
+        <p>{{ $card->descricao }}</p>
+        <small>{{ $card->classe }}</small>
       </div>
       <div class="container-preco">
-        <span>R$10,00</span>
+        <span>{{ 'R$ '.$card->valor }}</span>
         <div class="icone">
           <img src="https://cdn.icon-icons.com/icons2/1380/PNG/512/vcsnormal_93488.png" alt="">
         </div>
       </div>
     </div>
-    <div class="card-produto">
+    @endforeach
+    <!-- <div class="card-produto">
       <div class="container-img">
         <img src="https://uploads.metropoles.com/wp-content/uploads/2020/05/19134444/pannacotta.jpg" alt="">
       </div>
@@ -152,7 +157,7 @@
           <img src="https://cdn.icon-icons.com/icons2/1380/PNG/512/vcsnormal_93488.png" alt="">
         </div>
       </div>
-    </div>
+    </div>-->
 
   </div>
 </div>

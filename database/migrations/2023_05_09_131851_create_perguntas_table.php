@@ -15,7 +15,7 @@ class CreatePerguntasTable extends Migration
     {
         Schema::create('perguntas', function (Blueprint $table) {
             $table->id();
-            $table->string('descricao'); // Cabeçalho da perguntas
+            $table->text('descricao'); // Cabeçalho da perguntas
             $table->string('op1'); // opção de resposta da pergunta
             $table->string('op2'); // opção de resposta da pergunta
             $table->string('op3'); // opção de resposta da pergunta
