@@ -3,12 +3,16 @@
 @section('content')
     <div class="container">
         <h1>{{ $questionario->nome }}</h1>
-        <form method="POST" action="/processar-formulario">
+        <form method="POST" action="{{ route('respostas.store') }}">
             @csrf
             @foreach ($perguntas as $pergunta)
                 <h2>Grupo {{ $grupo->nome }} </h2>
                 <strong>Pergunta {{ $perguntas->currentPage() }} </strong>
                 <p>{{ $pergunta->descricao }}</p>
+                <input type="hidden" name="grupo_id" value="{{ $grupo->id }}">
+                <input type="hidden" name="pergunta_id" value="{{ $pergunta->id }}">
+                <input type="hidden" name="questionario_id" value="{{ $questionario->id }}">
+
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="form-check">
@@ -53,6 +57,7 @@
                             </div>
                         </li>
                     @endif
+                    <button type="submit" class="btn btn-info">Proximo</button>
                 </ul>
 
 
