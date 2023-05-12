@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pergunta;
 use Illuminate\Http\Request;
 use App\Models\Questionario;
+use App\Models\Grupo;
 use App\Models\Resposta;
 
 class RespostaController extends Controller
@@ -13,10 +15,23 @@ class RespostaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function mostraPergunta($grupo_id)
+    {
+        $perguntas = Pergunta::where('grupo_id', $grupo_id)->paginate(1);
+        $grupo =  Grupo::find($grupo_id);
+        $questionario = Questionario::find($grupo->questionario_id);
+
+        return view('welcome', [
+            'perguntas' => $perguntas,
+            'grupo' => $grupo,
+            'questionario' => $questionario
+        ]);
+    }
+
     public function exibirRespostas($questionario_id)
     {
-        $questionario = Questionario::findOrFail($questionario_id);
 
+        $questionario = Questionario::findOrFail($questionario_id);
         $grupos = $questionario->grupos()->with(['perguntas'])->get();
 
         return view('welcome', compact('questionario', 'grupos'));

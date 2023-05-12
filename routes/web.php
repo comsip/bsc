@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\RespostaController;
+use App\Http\Controllers\QuestionarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,8 @@ Route::get('/flex', function () {
     return view('flex');
 });
 
-Route::get('/respostas/{questionario_id}', [RespostaController::class, 'exibirRespostas']);
+Route::get('/respostas/{questionario_id}', [RespostaController::class, 'mostraPergunta'])->name('respostas');
+
 
 
 Auth::routes();
@@ -35,3 +37,4 @@ Route::resource('grupos', 'App\Http\Controllers\GrupoController');
 Route::resource('perguntas', 'App\Http\Controllers\PerguntaController');
 Route::resource('cards', 'App\Http\Controllers\CardController');
 Route::resource('respostas', 'App\Http\Controllers\RespostaController');
+Route::get('/questionario/{questionario_id}/grupo/{grupo_id}/pergunta/{pergunta_id}/proximo', [QuestionarioController::class, 'proximo'])->name('questionario.pergunta.proximo');

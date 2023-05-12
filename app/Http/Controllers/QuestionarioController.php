@@ -4,9 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Questionario;
+use App\Models\Pergunta;
 
 class QuestionarioController extends Controller
 {
+    public function proximo($questionario_id, $grupo_id, $pergunta_id)
+    {
+        $pergunta_atual = Pergunta::findOrFail($pergunta_id);
+
+        $proxima_pergunta = $pergunta_atual->proximaPergunta;
+
+        if ($proxima_pergunta) {
+            return redirect()->route('questionario.pergunta', [
+                'questionario_id' => $questionario_id,
+                'grupo_id' => $grupo_id,
+                'pergunta_id' => $proxima_pergunta->id
+            ]);
+        } else {
+            return redirect()->route('questionario.resultado', [
+                'questionario_id' => $questionario_id
+            ]);
+        }
+    }
     public function index()
     {
         $questionarios = Questionario::all();
