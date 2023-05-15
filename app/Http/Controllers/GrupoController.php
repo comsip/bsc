@@ -8,6 +8,10 @@ use App\Models\Grupo;
 
 class GrupoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $grupos = grupo::all();
