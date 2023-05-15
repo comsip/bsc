@@ -8,6 +8,10 @@ use App\Models\Pergunta;
 
 class PerguntaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $perguntas = pergunta::all();

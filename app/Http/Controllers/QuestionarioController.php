@@ -8,6 +8,10 @@ use App\Models\Pergunta;
 
 class QuestionarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function proximo($questionario_id, $grupo_id, $pergunta_id)
     {
         $pergunta_atual = Pergunta::findOrFail($pergunta_id);

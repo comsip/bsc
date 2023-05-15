@@ -37,4 +37,5 @@ Route::resource('grupos', 'App\Http\Controllers\GrupoController');
 Route::resource('perguntas', 'App\Http\Controllers\PerguntaController');
 Route::resource('cards', 'App\Http\Controllers\CardController');
 Route::resource('respostas', 'App\Http\Controllers\RespostaController');
+Route::resource('participantes', 'App\Http\Controllers\ParticipanteController');
 Route::get('/questionario/{questionario_id}/grupo/{grupo_id}/pergunta/{pergunta_id}/proximo', [QuestionarioController::class, 'proximo'])->name('questionario.pergunta.proximo');
